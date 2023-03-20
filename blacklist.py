@@ -60,8 +60,8 @@ def checkLastUpdate(TEMP_FILE, WHITELIST_FILE, DATE_STRING_START):
                         os.remove(WHITELIST_FILE)
                         # Move new file
                         move(abs_path, WHITELIST_FILE)
+                        file.close()
     finally:
-        file.close()
         tempfile.close()
         return update
 
@@ -80,7 +80,7 @@ def restartService(SERVICE):
 
 if __name__ == "__main__":
     URL = 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts'
-    CONF_FILE = '/etc/unbound/unbound.conf.d/fakenews-gambling-porn-social.conf'
+    CONF_FILE = 'fakenews-gambling-porn-social.conf'
     WHITELIST_FILE = 'whitelist.txt'
     DATE_STRING_START = '# Date:'
     SERVICE = 'unbound'
